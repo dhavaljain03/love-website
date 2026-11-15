@@ -3,120 +3,269 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Love ❤️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Sacramento&display=swap" rel="stylesheet">
+    <title>For You My Baby ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Sacramento&family=Caveat:wght@600&display=swap" rel="stylesheet">
     <style>
-        :hl-bg { background-color: #faf3ee; }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        
         body {
-            background-color: var(--bg-color, #faf3ee);
-            color: #4a3b32;
+            background: linear-gradient(135deg, #ff4d6d 0%, #ff758f 50%, #ffb3c1 100%);
+            color: #4a1c24;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow-x: hidden;
-            transition: background 0.5s ease;
+            overflow: hidden;
+            position: relative;
+            transition: background 0.8s ease;
         }
+
+        body.love-theme {
+            background: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 50%, #ffb3c6 100%);
+        }
+
+        .particle-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            overflow: hidden; z-index: 0; pointer-events: none;
+        }
+        .particle {
+            position: absolute;
+            animation: floatUp 6s linear infinite;
+            opacity: 0.75;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(105vh) rotate(0deg) scale(0.7); opacity: 0; }
+            20% { opacity: 0.85; }
+            100% { transform: translateY(-10vh) rotate(360deg) scale(1.2); opacity: 0; }
+        }
+
         .screen {
             display: none;
             width: 100%;
-            max-width: 480px;
+            max-width: 460px;
             min-height: 100vh;
-            padding: 30px;
+            padding: 25px;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: absolute;
-            animation: fadeIn 0.8s ease-in-out;
+            z-index: 10;
+            animation: fadeIn 0.6s ease-in-out;
         }
         .screen.active { display: flex; }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: scale(0.96); }
+            to { opacity: 1; transform: scale(1); }
         }
-        /* Gift Box */
-        .gift-box { font-size: 80px; cursor: pointer; animation: bounce 2s infinite; margin-bottom: 20px; }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-20px); }
-            60% { transform: translateY(-10px); }
-        }
-        h1, h2 { font-family: 'Sacramento', cursive; font-size: 3rem; color: #d46a6a; margin-bottom: 15px; }
-        p { font-size: 1.05rem; line-height: 1.6; margin-bottom: 25px; color: #6b5b52; }
-        
-        /* Buttons */
-        .btn {
-            background-color: #d46a6a;
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-size: 1rem;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(212, 106, 106, 0.3);
-            transition: transform 0.2s, background 0.2s;
-        }
-        .btn:hover { background-color: #c05555; transform: scale(1.05); }
 
-        /* Keypad */
-        .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 20px 0; max-width: 280px; }
+        h1, h2 { font-family: 'Sacramento', cursive; font-size: 3rem; color: #c9184a; margin-bottom: 12px; }
+        p { font-size: 1.05rem; line-height: 1.6; margin-bottom: 20px; color: #590d22; font-weight: 500; }
+
+        .btn-next {
+            background: #ff4d6d; color: white; border: none;
+            padding: 12px 32px; border-radius: 30px; font-size: 1rem; font-weight: 600;
+            cursor: pointer; box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+            transition: transform 0.2s, background 0.2s; margin-top: 10px;
+        }
+        .btn-next:hover { background: #c9184a; transform: scale(1.06); }
+
+        .gift-emoji {
+            font-size: 95px; cursor: pointer; display: inline-block;
+            animation: giftBounce 1.5s infinite ease-in-out; margin-bottom: 15px;
+            filter: drop-shadow(0 8px 15px rgba(0,0,0,0.2));
+        }
+        @keyframes giftBounce {
+            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+            25% { transform: translateY(-18px) rotate(-6deg) scale(1.08); }
+            50% { transform: translateY(0) rotate(0deg) scale(1); }
+            75% { transform: translateY(-10px) rotate(6deg) scale(1.05); }
+        }
+
+        .flower-field {
+            display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px;
+            width: 100%; max-width: 360px; margin-bottom: 20px; padding: 10px;
+        }
+        .mini-flower {
+            font-size: 36px; display: inline-block;
+            animation: flowerPulse 1.8s infinite alternate ease-in-out;
+        }
+        .mini-flower:nth-child(odd) { animation-delay: 0.3s; }
+        .mini-flower:nth-child(3n) { animation-delay: 0.6s; }
+        @keyframes flowerPulse {
+            0% { transform: scale(0.85) rotate(-12deg); }
+            100% { transform: scale(1.2) rotate(12deg); }
+        }
+
+        .moving-envelope {
+            font-size: 95px; cursor: pointer; display: inline-block;
+            animation: floatWiggle 2s infinite ease-in-out; margin-bottom: 15px;
+        }
+        @keyframes floatWiggle {
+            0%, 100% { transform: translateY(0) rotate(-5deg) scale(1); }
+            50% { transform: translateY(-15px) rotate(5deg) scale(1.12); }
+        }
+
+        .teddy-stage {
+            display: flex; justify-content: center; align-items: center; gap: 5px;
+            font-size: 75px; margin-bottom: 15px; position: relative; height: 120px;
+        }
+        .teddy-male { animation: cuddleRight 2s infinite alternate ease-in-out; }
+        .teddy-female { animation: cuddleLeft 2s infinite alternate ease-in-out; position: relative; }
+        .teddy-female::after {
+            content: '🎀'; font-size: 28px; position: absolute; top: -5px; right: 5px;
+        }
+        .cuddle-heart {
+            font-size: 35px; position: absolute; top: 0;
+            animation: popHeart 1.5s infinite ease-in-out;
+        }
+        @keyframes cuddleRight { 0% { transform: translateX(-10px) rotate(-5deg); } 100% { transform: translateX(6px) rotate(5deg); } }
+        @keyframes cuddleLeft { 0% { transform: translateX(10px) rotate(5deg); } 100% { transform: translateX(-6px) rotate(-5deg); } }
+        @keyframes popHeart { 0%, 100% { transform: scale(0.8) translateY(0); opacity: 0.7; } 50% { transform: scale(1.3) translateY(-12px); opacity: 1; } }
+
+        .cute-girl-avatar {
+            width: 150px; height: 150px; background: #fff0f3; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center; font-size: 90px;
+            border: 5px solid #ff758f; box-shadow: 0 8px 20px rgba(255, 77, 109, 0.25);
+            margin-bottom: 20px; animation: gentleBob 2.5s infinite ease-in-out;
+        }
+        @keyframes gentleBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        .quote-rectangle {
+            background: rgba(255, 255, 255, 0.92);
+            border: 3px solid #ff758f;
+            border-radius: 16px;
+            padding: 28px 22px;
+            box-shadow: 0 10px 25px rgba(201, 24, 74, 0.15);
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        .quote-line { font-size: 1.15rem; line-height: 2; color: #333; font-weight: 500; }
+        .hl-light-pink { background-color: #ffd6e0; padding: 3px 8px; border-radius: 6px; font-weight: 600; }
+        .hl-pink { background-color: #ff8fa3; color: #fff; padding: 3px 8px; border-radius: 6px; font-weight: 600; }
+        .hl-yellow { background-color: #fff07c; padding: 3px 8px; border-radius: 6px; font-weight: 600; }
+
+        .pin-dots { display: flex; gap: 12px; margin-bottom: 20px; }
+        .dot { width: 15px; height: 15px; border-radius: 50%; border: 2px solid #c9184a; background: transparent; transition: 0.2s; }
+        .dot.filled { background: #c9184a; transform: scale(1.15); }
+        .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; max-width: 260px; }
         .key {
             width: 65px; height: 65px; border-radius: 50%; border: none;
-            background: white; font-size: 1.3rem; color: #d46a6a; cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: background 0.2s;
+            background: white; font-size: 1.35rem; font-weight: 600; color: #c9184a;
+            cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.08); transition: 0.15s;
         }
-        .key:active { background: #fce4e4; }
-        .pin-dots { display: flex; gap: 10px; margin-bottom: 20px; }
-        .dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid #d46a6a; background: transparent; }
-        .dot.filled { background: #d46a6a; }
+        .key:active { background: #ffccd5; transform: scale(0.92); }
 
-        /* Polaroid / Gallery Grid */
-        .polaroid-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; width: 100%; }
-        .polaroid { background: white; padding: 10px 10px 25px 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); border-radius: 4px; transform: rotate(-2deg); }
-        .polaroid:nth-child(even) { transform: rotate(3deg); }
-        .polaroid img { width: 100%; height: 130px; object-fit: cover; border-radius: 2px; }
-
-        /* Floating Customizer Toolbar */
-        #customizer {
-            position: fixed; bottom: 15px; right: 15px; background: rgba(255,255,255,0.9);
-            padding: 10px 15px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-            display: flex; gap: 10px; align-items: center; z-index: 1000; font-size: 0.85rem;
+        .loader-heart { font-size: 70px; animation: heartbeat 0.8s infinite alternate; margin-bottom: 15px; }
+        @keyframes heartbeat { 0% { transform: scale(0.85); } 100% { transform: scale(1.25); } }
+        .progress-bar-wrap {
+            width: 220px; height: 12px; background: white; border-radius: 10px;
+            overflow: hidden; margin: 10px auto 15px; border: 2px solid #ff758f;
         }
-        #customizer select, #customizer input { padding: 4px 8px; border-radius: 6px; border: 1px solid #ccc; cursor: pointer; }
+        .progress-fill { height: 100%; width: 0%; background: #ff4d6d; transition: width 5s linear; }
+
+        .voice-card {
+            background: white; padding: 25px 20px; border-radius: 20px;
+            border: 3px solid #ff8fa3; box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            width: 100%; margin-bottom: 20px;
+        }
+
+        .polaroid-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 15px;
+            width: 100%; margin-bottom: 20px;
+        }
+        .polaroid-cell {
+            background: white; padding: 10px 10px 28px 10px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.12); border-radius: 4px;
+            transform: rotate(-2deg);
+        }
+        .polaroid-cell:nth-child(even) { transform: rotate(2.5deg); }
+        .empty-photo-slot {
+            width: 100%; height: 115px; background: #fff0f3;
+            border: 2px dashed #ff8fa3; display: flex; justify-content: center;
+            align-items: center; color: #ff758f; font-size: 0.8rem; border-radius: 2px;
+        }
+
+        .letter-paper {
+            background: #fffdf9;
+            background-image: repeating-linear-gradient(transparent, transparent 31px, #ffc2d1 32px);
+            border: 2px solid #ff8fa3; border-radius: 12px;
+            padding: 30px 22px; width: 100%; min-height: 290px;
+            box-shadow: 0 10px 25px rgba(201, 24, 74, 0.15); text-align: left;
+        }
+        .letter-text {
+            font-family: 'Caveat', cursive; font-size: 1.55rem; line-height: 32px; color: #590d22; outline: none;
+        }
     </style>
 </head>
 <body id="body">
 
-    <!-- CONFIGURATION & CUSTOMIZER -->
-    <div id="customizer">
-        <label>🎨 Bg:</label>
-        <select id="bgColorPicker" onchange="changeBackground(this.value)">
-            <option value="#faf3ee">Soft Peach (Default)</option>
-            <option value="#fce4ec">Romantic Pink</option>
-            <option value="#e8f5e9">Soft Mint</option>
-            <option value="#fff9c4">Warm Cream</option>
-        </select>
+    <div class="particle-bg" id="particleBg"></div>
+
+    <!-- SLIDE 1 -->
+    <div id="slide1" class="screen active">
+        <div class="gift-emoji" onclick="goToSlide(2)">🎁</div>
+        <h1 style="color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.2);">For you my baby</h1>
+        <p style="color: #fff0f3;">Tap the gift to open ❤️</p>
     </div>
 
-    <!-- SCREEN 1: GIFT BOX OPENING -->
-    <div id="screen1" class="screen active">
-        <div class="gift-box" onclick="nextScreen(2)">🎁</div>
-        <h1>For You, My Love</h1>
-        <p>Tap the gift box to open your surprise...</p>
+    <!-- SLIDE 2 -->
+    <div id="slide2" class="screen">
+        <h2>Blooming For You 🌸</h2>
+        <div class="flower-field">
+            <span class="mini-flower">🌹</span><span class="mini-flower">🌸</span><span class="mini-flower">🌺</span><span class="mini-flower">🌷</span><span class="mini-flower">💐</span><span class="mini-flower">🌹</span>
+            <span class="mini-flower">🌷</span><span class="mini-flower">🌹</span><span class="mini-flower">🌸</span><span class="mini-flower">🌺</span><span class="mini-flower">🌹</span><span class="mini-flower">🌷</span>
+            <span class="mini-flower">🌺</span><span class="mini-flower">🌷</span><span class="mini-flower">🌹</span><span class="mini-flower">💐</span><span class="mini-flower">🌸</span><span class="mini-flower">🌺</span>
+            <span class="mini-flower">🌸</span><span class="mini-flower">🌺</span><span class="mini-flower">🌷</span><span class="mini-flower">🌹</span><span class="mini-flower">🌷</span><span class="mini-flower">🌸</span>
+        </div>
+        <button class="btn-next" onclick="goToSlide(3)">Next ❤️</button>
     </div>
 
-    <!-- SCREEN 2: FLOWERS / LOVING VIBE -->
-    <div id="screen2" class="screen">
-        <h2>Blooming Just For You 🌸</h2>
-        <p>In your smile, I found my peace. In your love, I found my home.</p>
-        <button class="btn" onclick="nextScreen(3)">Next ❤️</button>
+    <!-- SLIDE 3 -->
+    <div id="slide3" class="screen">
+        <div class="moving-envelope" onclick="goToSlide(4)">💌</div>
+        <p style="font-size: 1.25rem; font-weight: 600; color: #c9184a;">Tithiii thiss iss for youuu my BABBYY!!❤️</p>
+        <p style="font-size: 0.85rem; opacity: 0.8;">(Tap the letter above 💌)</p>
     </div>
 
-    <!-- SCREEN 3: PASSCODE LOCK -->
-    <div id="screen3" class="screen">
+    <!-- SLIDE 4 -->
+    <div id="slide4" class="screen">
+        <div class="teddy-stage">
+            <div class="cuddle-heart">💖</div>
+            <div class="teddy-male">🧸</div>
+            <div class="teddy-female">🧸</div>
+        </div>
+        <p style="font-size: 1.15rem; font-weight: 600;">
+            You mean everything to mee 🫶🫶<br><br>
+            Take restt merii JAAN!!💗💗, You deserve all the love and care ❤️
+        </p>
+        <button class="btn-next" onclick="goToSlide(5)">Next ➔</button>
+    </div>
+
+    <!-- SLIDE 5 -->
+    <div id="slide5" class="screen">
+        <div class="cute-girl-avatar">👧🏻💖</div>
+        <p style="font-size: 1.15rem; font-weight: 600;">You will always be my favorite person!! and I LOVE YOU VERY MUCH❤️</p>
+        <button class="btn-next" onclick="goToSlide(6)">Next ➔</button>
+    </div>
+
+    <!-- SLIDE 6 -->
+    <div id="slide6" class="screen">
+        <div class="quote-rectangle">
+            <p class="quote-line" style="margin-bottom: 12px;">
+                <span class="hl-light-pink">In your smile</span> i found <span class="hl-yellow">my peace</span>
+            </p>
+            <p class="quote-line" style="margin-bottom: 0;">
+                <span class="hl-pink">In your love</span> i found <span class="hl-yellow">my home</span>
+            </p>
+        </div>
+        <button class="btn-next" onclick="goToSlide(7)">Next ➔</button>
+    </div>
+
+    <!-- SLIDE 7 -->
+    <div id="slide7" class="screen">
         <h2>Enter Passcode 🔒</h2>
+        <p style="font-size: 0.95rem; margin-bottom: 12px; color: #a4133c;">Hint: "your phone lock"</p>
         <div class="pin-dots">
             <div class="dot" id="d1"></div>
             <div class="dot" id="d2"></div>
@@ -135,47 +284,101 @@
             <button class="key" onclick="pressKey('9')">9</button>
             <button class="key" onclick="pressKey('0')">0</button>
         </div>
-        <p id="pin-error" style="color: #d46a6a; font-size: 0.9rem; margin-top: 10px; display: none;">Incorrect passcode! Try "1234"</p>
+        <p id="pin-error" style="color: #d00000; font-size: 0.9rem; margin-top: 10px; display: none;">Wrong password! Try again ❤️</p>
     </div>
 
-    <!-- SCREEN 4: VOICE NOTE & MESSAGE -->
-    <div id="screen4" class="screen">
-        <h2>Straight From The Heart 💌</h2>
-        <p>Listen to what I have to say to you...</p>
-        <!-- Placeholder audio player -->
-        <audio controls style="width: 100%; margin-bottom: 20px;">
-            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
-        <p style="font-size: 0.95rem; font-style: italic;">"I wish I could be there to hug you, pamper you, and make these days a little easier..."</p>
-        <button class="btn" onclick="nextScreen(5)">Next ❤️</button>
-    </div>
-
-    <!-- SCREEN 5: POLAROID MEMORIES -->
-    <div id="screen5" class="screen">
-        <h2>Our Memories 📸</h2>
-        <div class="polaroid-grid">
-            <div class="polaroid">
-                <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=300" alt="Memory">
+    <!-- SLIDE 8 -->
+    <div id="slide8" class="screen">
+        <div id="loadingState">
+            <div class="loader-heart">💗</div>
+            <div class="progress-bar-wrap">
+                <div class="progress-fill" id="progressFill"></div>
             </div>
-            <div class="polaroid">
-                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=300" alt="Memory">
+            <p style="font-weight: 600; font-size: 1.2rem;">loading...</p>
+        </div>
+        <div id="unlockedState" style="display: none;">
+            <div style="font-size: 75px; margin-bottom: 10px;">🔓✨</div>
+            <h2>Unlocked!</h2>
+            <p>Welcome inside my heart ❤️</p>
+            <button class="btn-next" onclick="goToSlide(9)">Next ➔</button>
+        </div>
+    </div>
+
+    <!-- SLIDE 9 -->
+    <div id="slide9" class="screen">
+        <div class="voice-card">
+            <div style="font-size: 50px; margin-bottom: 10px;">🎧🎙️</div>
+            <h2>For you my BABBY!!!❤️❤️</h2>
+            <p style="font-size: 0.9rem; margin-bottom: 15px;">Tap play to listen to my voice note</p>
+            <audio controls style="width: 100%;">
+                <source src="my-voice.mp3" type="audio/mpeg">
+                Your browser does not support audio.
+            </audio>
+        </div>
+        <button class="btn-next" onclick="goToSlide(10)">Next ➔</button>
+    </div>
+
+    <!-- SLIDE 10 -->
+    <div id="slide10" class="screen">
+        <h2 style="font-family: 'Poppins', sans-serif; font-size: 1.6rem; font-weight: 700;">MY FAVOURITESS😋</h2>
+        <div class="polaroid-grid">
+            <div class="polaroid-cell"><img src="photo1.jpeg" style="width:100%; height:115px; object-fit:cover; border-radius:2px;"></div>
+            <div class="polaroid-cell"><img src="photo2.jpeg" style="width:100%; height:115px; object-fit:cover; border-radius:2px;"></div>
+            <div class="polaroid-cell"><img src="photo3.jpeg" style="width:100%; height:115px; object-fit:cover; border-radius:2px;"></div>
+            <div class="polaroid-cell"><img src="photo4.jpeg" style="width:100%; height:115px; object-fit:cover; border-radius:2px;"></div>
+        </div>
+        <button class="btn-next" onclick="goToSlide(11)">Next ➔</button>
+    </div>
+
+    <!-- SLIDE 11 -->
+    <div id="slide11" class="screen">
+        <h2>A Letter For You 💌</h2>
+        <div class="letter-paper">
+            <div class="letter-text" contenteditable="true">
+                My dearest Tithi,<br><br>
+                Write your special heartfelt letter right here... ❤️
             </div>
         </div>
-        <button class="btn" onclick="nextScreen(6)">Final Note 💖</button>
-    </div>
-
-    <!-- SCREEN 6: FINAL ENVELOPE -->
-    <div id="screen6" class="screen">
-        <div style="font-size: 60px; margin-bottom: 10px;">💌</div>
-        <h2>You Mean Everything</h2>
-        <p>Even on your hardest days, you'll always be my favorite person. Love you forever! ✨</p>
-        <button class="btn" onclick="nextScreen(1)">Replay 💫</button>
     </div>
 
     <script>
-        // PASSCODE LOGIC (Change "1234" to any 4-digit code you want)
-        let correctPin = "1234";
+        let currentSlide = 1;
+        const particleBg = document.getElementById('particleBg');
+
+        setInterval(() => {
+            const p = document.createElement('div');
+            p.classList.add('particle');
+            if (currentSlide === 1) {
+                const flowers = ['🌹', '🌸', '🌺', '🌷'];
+                p.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
+            } else {
+                const hearts = ['❤️', '💗', '💖', '💕'];
+                p.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+            }
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.fontSize = (Math.random() * 16 + 16) + 'px';
+            p.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            particleBg.appendChild(p);
+            setTimeout(() => p.remove(), 6000);
+        }, 350);
+
+        function goToSlide(slideNum) {
+            currentSlide = slideNum;
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(`slide${slideNum}`).classList.add('active');
+
+            if (slideNum === 1) {
+                document.body.classList.remove('love-theme');
+            } else {
+                document.body.classList.add('love-theme');
+            }
+
+            if (slideNum === 8) {
+                startLoadingSequence();
+            }
+        }
+
+        const correctPin = "5928";
         let enteredPin = "";
 
         function pressKey(num) {
@@ -185,10 +388,18 @@
             }
             if (enteredPin.length === 4) {
                 if (enteredPin === correctPin) {
-                    setTimeout(() => { nextScreen(4); enteredPin = ""; updateDots(); }, 300);
+                    setTimeout(() => {
+                        goToSlide(8);
+                        enteredPin = "";
+                        updateDots();
+                    }, 300);
                 } else {
                     document.getElementById("pin-error").style.display = "block";
-                    setTimeout(() => { enteredPin = ""; updateDots(); document.getElementById("pin-error").style.display = "none"; }, 800);
+                    setTimeout(() => {
+                        enteredPin = "";
+                        updateDots();
+                        document.getElementById("pin-error").style.display = "none";
+                    }, 800);
                 }
             }
         }
@@ -204,15 +415,20 @@
             }
         }
 
-        // NAVIGATION LOGIC
-        function nextScreen(screenNum) {
-            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-            document.getElementById(`screen${screenNum}`).classList.add('active');
-        }
+        function startLoadingSequence() {
+            const loadingState = document.getElementById('loadingState');
+            const unlockedState = document.getElementById('unlockedState');
+            const progressFill = document.getElementById('progressFill');
 
-        // BACKGROUND COLOR CUSTOMIZER
-        function changeBackground(color) {
-            document.getElementById('body').style.setProperty('--bg-color', color);
+            loadingState.style.display = 'block';
+            unlockedState.style.display = 'none';
+            progressFill.style.width = '0%';
+
+            setTimeout(() => { progressFill.style.width = '100%'; }, 50);
+            setTimeout(() => {
+                loadingState.style.display = 'none';
+                unlockedState.style.display = 'block';
+            }, 5050);
         }
     </script>
 </body>
